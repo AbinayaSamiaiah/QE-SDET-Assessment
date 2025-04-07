@@ -39,29 +39,7 @@ Check installation in command prompt:
 
 mvn -v
 
-3. IDE for Java (Eclipse, IntelliJ IDEA, etc.)
-
-Download Eclipse: Eclipse IDE
-
-Download IntelliJ IDEA: IntelliJ IDEA
-
-4. Selenium WebDriver Dependencies
-
-The project uses Maven to automatically download Selenium dependencies. Ensure the internet connection is active to download the dependencies when running Maven.
-
-5. Browser Driver
-
-For Chrome or Edge, ChromeDriver or EdgeDriver must be downloaded respectively and placed in your PATH or referenced directly in the test configuration.
-
-Download ChromeDriver: ChromeDriver
-
-Download EdgeDriver: EdgeDriver
-
-6. Gitbash
-
-Download Gitbash and install it to perform clone and push actions in Github.
-
-7. Edit the System Environment Variables
+3. Edit the System Environment Variables
 
 Step 1: Copy Java file <path> in your local machine and configure it under System Variables -> New -> JAVA_HOME & <Path>
 
@@ -71,7 +49,31 @@ Step 3: Copy Maven file <path> in your local machine and configure it under Syst
 
 Step 4: Copy Maven bin file <path> in your local machine and configure it under System Variables -> Path -> New -> <Path>
 
-8. TestNG Plugin
+Try running commands in Java and Maven installation steps, if it threw error before.
+
+4. IDE for Java (Eclipse, IntelliJ IDEA, etc.)
+
+Download Eclipse: Eclipse IDE
+
+Download IntelliJ IDEA: IntelliJ IDEA
+
+5. Selenium WebDriver Dependencies
+
+The project uses Maven to automatically download Selenium dependencies. Ensure the internet connection is active to download the dependencies when running Maven.
+
+6. Browser Driver
+
+For Chrome or Edge, ChromeDriver or EdgeDriver must be downloaded respectively and placed in your PATH or referenced directly in the test configuration.
+
+Download ChromeDriver: ChromeDriver
+
+Download EdgeDriver: EdgeDriver
+
+7. Git & Visual Studio Code
+
+Download Git and Visual Studio Code to perform clone and push actions in Github.
+
+9. TestNG Plugin
 
 Go to Eclipse -> Help -> Eclipse MarketPlace -> Search for 'TestNG' & Install.
 
@@ -80,61 +82,75 @@ Go to Eclipse -> Help -> Eclipse MarketPlace -> Search for 'TestNG' & Install.
 Step 1: Clone the Github Repository
 
 Clone the repository to your local machine using below commands in Gitbash:
-bash
-Copy
-git clone https://github.com/yourusername/automation-testing-project.git
+
+Open Visual Studio Code
+Open Terminal
+cd <local path where you want to clone the files>
+git clone https://github.com/AbinayaSamiaiah/QE-SDET-Assessment.git
+
+Note: make sure files are cloned from master branch of github
 
 Step 2: Install Dependencies
 
 Navigate to the project directory and install the necessary dependencies using Maven:
 
-bash
-Copy
-cd automation-testing-project
+cd <project directory name>
 mvn install
-Maven will automatically download the required libraries (including Selenium WebDriver) as specified in the pom.xml.
+
+Note: provide commands in Visual Studio Code -> Terminal
+
+Maven will automatically download the required libraries (including Selenium WebDriver) as specified in the pom.xml under project folder.
 
 Step 3: Configure WebDriver Path
+
 You can configure the WebDriver in your test code. For example, if you're using ChromeDriver, add this line in the setup method of your test class:
 
-java
-Copy
-System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+System.setProperty("webdriver.chrome.driver", "localpath/to/chromedriver");
+
 Alternatively, you can place the browser driver in the system’s PATH.
 
 Step 4: Import the Project into Your IDE
+
 Open your preferred IDE (Eclipse, IntelliJ IDEA).
 
 Import the project as a Maven project to ensure that dependencies are automatically downloaded.
 
-Running Tests
-Running All Tests
+
+**Running Tests**
+
 To run all the tests, use the following Maven command:
 
-bash
-Copy
 mvn test
+
 This command will trigger all the tests defined in the src/test/java directory using the TestNG framework.
 
 Running Specific Tests
 To run a specific test class, use the following Maven command, replacing TestClassName with the name of your test class:
 
-bash
-Copy
 mvn -Dtest=TestClassName test
+
 Alternatively, you can run tests using your IDE’s built-in test runner (Eclipse or IntelliJ IDEA).
 
-Understanding the Report
+Or You can create Test Suite using TestNG plugin in Eclipse by following below steps:
+Right click on eclipse project -> TEStNG -> Convert to TestNG -> Provide Suite name and Test name -> Finish -> Navigate to .xml file created under project -> make changes to class name for which test should be run.
+Refer testng.xml file in project directory.
+
+Once test run is completed, Results will be available in Console and Results of running suite.
+
+
+**Understanding the Report**
+
 TestNG Reports
-After running the tests, Maven will generate reports in the target directory. These reports are created by TestNG.
+
+After running the tests, Maven will generate reports in the test-output directory(refresh the project). These reports are created by TestNG.
 
 TestNG HTML Report: This provides a graphical summary of the test execution. It includes test names, pass/fail statuses, execution time, and more.
 
-Location: target/surefire-reports/index.html
+Location: test-output/surefire-reports/index.html
 
 TestNG XML Report: This is an XML-based report that contains detailed information about the tests, including status codes, errors, and stack traces.
 
-Location: target/test-classes/testng-results.xml
+Location: test-output/testng-results.xml
 
 Example: Understanding TestNG HTML Report
 Test Summary: The top section shows the number of tests that passed, failed, or were skipped.
@@ -157,44 +173,23 @@ Stack Trace (for failed tests): In case of failure, the detailed error message a
 
 Detailed Test View: Clicking on any test case in the report will give you detailed information like the input, output, and any error logs.
 
-Sample Report View
+**Report View**
+
 Test Result Summary
 
-Passed: 10
+Passed: 5
 
-Failed: 2
+Failed: 0
 
-Skipped: 1
+Skipped: 0
 
 Individual Test Details
 
-Test Case 1: Verify User Creation (POST)
+Total running time: 41 seconds
 
-Status: Passed
-
-Duration: 2s
-
-Test Case 2: Verify Get User by ID (GET)
-
-Status: Failed
-
-Duration: 1s
-
-Error: AssertionError: expected [200] but found [404]
-
-Contributing
-We welcome contributions to improve the testing suite!
-
-Guidelines:
-Fork the repository.
-
-Create a new branch for your changes.
-
-Ensure your code follows the Java best practices and project coding standards.
-
-Write tests for any new features added.
-
-Submit a pull request with a clear description of your changes.
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+Class  Time(ms)
+UIValidation.REQ001B	37,106
+UIValidation.REQ001B_SUPPORTUPGRADE	3,352
+UIValidation.REQ001A	552
+UIValidation.REQ001B_SUPPORTUPGRADE	281
+UIValidation.REQ001B_SUPPORTUPGRADE	70
